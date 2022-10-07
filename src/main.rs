@@ -9,11 +9,14 @@ fn main() {
     // or else some patches to the runtime implemented by esp-idf-sys might not link properly.
     esp_idf_sys::link_patches();
 
+    // Bind the log crate to the ESP Logging facilities
+    esp_idf_svc::log::EspLogger::initialize_default();
+
     let peripherals = Peripherals::take().unwrap();
-    let mut led = peripherals.pins.gpio4.into_output().unwrap();
+    let pins = peripherals.pins;
 
     for n in 0..=100 {
         println!("Hello, world {n}x!", n = n);
-        thread::sleep(time::Duration::from_millis(100));
+        thread::sleep(time::Duration::from_millis(1000));
     }
 }
