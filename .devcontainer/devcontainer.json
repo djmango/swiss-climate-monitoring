@@ -7,7 +7,7 @@
     "args": {
       "CONTAINER_USER": "esp",
       "CONTAINER_GROUP": "esp",
-      "ESP_IDF_VERSION":"release/v4.4",
+      "ESP_IDF_VERSION": "release/v4.4",
       "ESP_BOARD": "esp32"
     }
   },
@@ -41,5 +41,13 @@
     8000
   ],
   "workspaceMount": "source=${localWorkspaceFolder},target=/home/esp/swiss_climate_monitoring,type=bind,consistency=cached",
-  "workspaceFolder": "/home/esp/swiss_climate_monitoring"
+  "workspaceFolder": "/home/esp/swiss_climate_monitoring",
+  // "remoteEnv": {
+  //   "RUST_ESP32_STD_DEMO_WIFI_SSID": "${localEnv:RUST_ESP32_STD_DEMO_WIFI_SSID}",
+  //   "RUST_ESP32_STD_DEMO_WIFI_PASS": "${localEnv:RUST_ESP32_STD_DEMO_WIFI_PASS}"
+  // }
+  "runArgs": [
+    "--env-file",
+    ".env"
+  ]
 }
